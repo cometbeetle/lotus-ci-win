@@ -1,0 +1,45 @@
+name: Create tag and image
+
+on:
+  push:
+    branches: 
+      - main
+  schedule:
+    - cron: "0 7 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create tag
+        id: tag
+        run: |
+          echo "TAG_NAME=$(date --rfc-3339=date | tr - .)" >> $GITHUB_OUTPUT
+          TAG_NAME=$(date --rfc-3339=date | tr - .)
+          git tag --delete $TAG_NAME || true
+          git push --delete origin $TAG_NAME || true
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      tag-name: ${{ steps.tag.outputs.TAG_NAME }}
+
+  deploy-image:
+    uses: ./.github/workflows/deploy-image.yml
+    needs: create-tag
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    with:
+      image-tags: ghcr.io/${{ github.repository }}:latest,ghcr.io/${{ github.repository }}:${{ needs.create-tag.outputs.tag-name }}
