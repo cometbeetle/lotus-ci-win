@@ -38,16 +38,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Need to fix tag input thing...
       - name: Build and push Docker image
         shell: powershell
         run: |
-          docker build . -t ghcr.io/${{ github.repository }}:latest
+          docker build . -t ${{ inputs.image-tags }}
           docker push ghcr.io/${{ github.repository }}:latest 
-  
-      - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@v1
-        with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
-          subject-digest: ${{ steps.push.outputs.digest }}
-          push-to-registry: false
