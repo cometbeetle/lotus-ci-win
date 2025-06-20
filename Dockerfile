@@ -7,7 +7,7 @@ RUN cmd /c "setx PATH \"%PATH%;C:\MinGit\cmd\" /M"
 
 # Install uv.
 RUN irm https://astral.sh/uv/install.ps1 | iex
-RUN cmd /c "setx PATH "%PATH%;C:\Users\ContainerAdministrator\.local\bin\" /M"
+RUN cmd /c "setx PATH \"%PATH%;C:\Users\ContainerAdministrator\.local\bin\" /M"
 
 # Install instant client.
 RUN Invoke-WebRequest 'https://download.oracle.com/otn_software/nt/instantclient/2380000/instantclient-basic-windows.x64-23.8.0.25.04.zip' -OutFile instantclient-basic-windows.x64-23.8.0.25.04.zip
