@@ -1,6 +1,6 @@
-# lotus-ci
+# lotus-ci-win
 
-A Docker image used for the `lotus` GitLab CI pipeline testing phase. 
+A Windows-based Docker image used for the `lotus` GitLab CI pipeline testing phase. 
 
 The image includes:
 
