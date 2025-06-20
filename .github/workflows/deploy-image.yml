@@ -41,5 +41,5 @@ jobs:
       - name: Build and push Docker image
         shell: powershell
         run: |
-          docker build . -t ${{ inputs.image-tags }}
+          docker build . ${{ inputs.image-tags }}
           docker push ghcr.io/${{ github.repository }}:latest 

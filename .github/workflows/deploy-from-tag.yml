@@ -18,4 +18,4 @@ jobs:
       attestations: write
       id-token: write
     with:
-      image-tags: ghcr.io/${{ github.repository }}:latest,ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+      image-tags: -t ghcr.io/${{ github.repository }}:latest -t ghcr.io/${{ github.repository }}:${{ github.ref_name }}
