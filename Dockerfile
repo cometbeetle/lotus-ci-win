@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/nanoserver
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2019
 
 # Install git.
 RUN Invoke-WebRequest 'https://github.com/git-for-windows/git/releases/download/v2.50.0.windows.1/MinGit-2.50.0-64-bit.zip' -OutFile MinGit.zip
