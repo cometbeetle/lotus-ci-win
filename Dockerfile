@@ -6,6 +6,9 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 ADD https://aka.ms/vs/17/release/vc_redist.x64.exe vcredist_x64.exe
 RUN Start-Process -FilePath C:\vcredist_x64.exe -ArgumentList "/install", "/passive", "/norestart", "'/log a.txt'" -PassThru | Wait-Process
 
+# Install Windows Server Media Foundation.
+RUN Install-WindowsFeature Server-Media-Foundation
+
 # Install Git.
 ADD https://github.com/git-for-windows/git/releases/download/v2.50.0.windows.1/MinGit-2.50.0-64-bit.zip MinGit.zip
 RUN Expand-Archive C:\MinGit.zip -DestinationPath C:\MinGit
