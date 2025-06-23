@@ -10,6 +10,10 @@ The image includes:
 * [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html) (version 23.8)
 
 
+*NOTE: OpenCV will not work properly inside Windows containers, as the "Media Foundation" feature is* 
+*[required](https://github.com/opencv/opencv-python?tab=readme-ov-file#frequently-asked-questions)*
+*and cannot be easily installed inside containers.*
+
 ### Image Creation Schedule
 
 * Images will be automatically created every Saturday, at 3:00 AM ET, in order to remain up-to-date with any dependencies.
