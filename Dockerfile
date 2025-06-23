@@ -18,4 +18,4 @@ RUN cmd /c "setx PATH \"%PATH%;C:\Users\ContainerAdministrator\.local\bin\" /M"
 # Install instant client.
 ADD https://download.oracle.com/otn_software/nt/instantclient/2380000/instantclient-basic-windows.x64-23.8.0.25.04.zip instantclient-basic-windows.x64-23.8.0.25.04.zip
 RUN Expand-Archive C:\instantclient-basic-windows.x64-23.8.0.25.04.zip -DestinationPath C:\InstantClient
-RUN cmd /c "setx PATH \"%PATH%;C:\InstantClient\" /M"
+RUN cmd /c "setx PATH \"%PATH%;C:\InstantClient\instantclient_23_8\" /M"
