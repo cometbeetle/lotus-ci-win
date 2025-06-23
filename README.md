@@ -4,7 +4,8 @@ A Windows-based Docker image used for the `lotus` GitLab CI pipeline testing pha
 
 The image includes:
 
-* [Python 3.12](https://hub.docker.com/_/python)
+* [MinGit](https://github.com/git-for-windows/git/releases) (version 2.50.0)
+* [Microsoft Visual Studio 2019 Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 * [uv](https://github.com/astral-sh/uv) (package resolver)
 * [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html) (version 23.8)
 
