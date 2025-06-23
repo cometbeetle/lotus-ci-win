@@ -1,6 +1,8 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+ADD https://aka.ms/vs/17/release/vc_redist.x64.exe vcredist_x64.exe
+RUN Start-Process -filepath C:\vcredist_x64.exe -ArgumentList "/install", "/passive", "/norestart", "'/log a.txt'" -PassThru | wait-process
 
 # Install git.
 RUN Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.50.0.windows.1/MinGit-2.50.0-64-bit.zip' -OutFile MinGit.zip
