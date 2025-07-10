@@ -41,5 +41,5 @@ jobs:
       - name: Build and push Docker image
         shell: powershell
         run: |
-          docker build . ${{ inputs.image-tags }}
+          docker build --isolation=hyperv . ${{ inputs.image-tags }}
           docker push --all-tags ghcr.io/${{ github.repository }} 
