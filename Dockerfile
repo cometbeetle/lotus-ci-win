@@ -4,6 +4,9 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 
 # Install Microsoft Visual Studio 2019 Redistributable (used by JAX).
 ADD https://aka.ms/vs/17/release/vc_redist.x64.exe vcredist_x64.exe
+
+# TODO: REMOVE THE LINE BELOW
+RUN echo "Hello, world!"
 RUN Start-Process -FilePath C:\vcredist_x64.exe -ArgumentList "/install", "/passive", "/norestart", "'/log a.txt'" -PassThru | Wait-Process
 
 # Install Git.
